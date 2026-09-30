@@ -53,9 +53,9 @@ spec:
   rules:
   - host: "app1.vrushali.online"
     http:
-      paths:
-        pathType: prefix
-        path: "/"
+    paths:
+    - pathType: prefix
+      path: "/"
         backend:
           service:
             name: app1-svc
