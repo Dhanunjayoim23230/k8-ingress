@@ -16,10 +16,11 @@ spec:
       labels:
         ingressDep: app1-ingress
     spec:
-      container:
+      containers:
       - name: app1-cnt
         image: Dhanunjayoim23230/app1:1.0.0
-        containerPort: 80
+        ports:
+        - containerPort: 80
 
 ---
 kind: Service
