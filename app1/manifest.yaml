@@ -52,11 +52,12 @@ spec:
   ingressClassName: alb
   rules:
   - host: "app1.vrushali.online"
-    paths:
-      pathType: prefix
-      path: "/"
-      backend:
-        service:
-          name: app1-svc
-          port:
-            number: 80
+    http:
+      paths:
+        pathType: prefix
+        path: "/"
+        backend:
+          service:
+            name: app1-svc
+            port:
+              number: 80
