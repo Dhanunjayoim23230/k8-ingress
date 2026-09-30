@@ -43,10 +43,11 @@ metadata:
   name: app1-ing
   namespace: default
   annotations:
-    alb.ingress.kubernetes.k8s.io/scheme: "internet-policy"
-    alb.ingress.kubernetes.k8s.io/connection: "{http}:{443}"
-    alb.ingress.kubernetes.k8s.io/certificate-arn: "arn-jh"
-    alb.ingress.kubernetes.k8s.io/group-Name: joindevops
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/Target-type: ip
+    alb.ingress.kubernetes.k8s.io/connection: '[{"HTTPS" : 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:753369745113:certificate/a9c07550-c115-4c70-89a9-1009326eb5b5"
+    alb.ingress.kubernetes.io/group.name: "joindevops"
     alb.ingress.kubernetes.k8s.io/host: "app1.vrushali.online"
 spec:
   ingressClassName: alb
@@ -59,6 +60,6 @@ spec:
         backend:
           service:
             name: app1-svc
-              port:
-                number: 80
+            port:
+              number: 80
 
