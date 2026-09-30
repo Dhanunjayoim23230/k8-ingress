@@ -53,7 +53,7 @@ spec:
   rules:
   - host: "app1.vrushali.online"
     paths:
-      pathType: Prefix
+      pathType: prefix
       path: "/"
       backend:
         service:
