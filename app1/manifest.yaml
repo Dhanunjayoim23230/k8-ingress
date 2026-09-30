@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: app1-cnt
-        image: Dhanunjayoim23230/app1:1.0.0
+        image: dhanunjay23230/app1:1.0.0
         ports:
         - containerPort: 80
 
