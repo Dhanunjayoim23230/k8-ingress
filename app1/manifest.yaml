@@ -1,0 +1,61 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app1-dep
+  namespace: default
+  labels:
+    ingressDep: app1-ingress
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      ingressDep: app1-ingress
+  template:
+    metadata:
+      name: app1
+      labels:
+        ingressDep: app1-ingress
+    spec:
+      containers:
+      - name: app1-cnt
+        image: Dhanunjayoim23230/app1:1.0.0
+        containerPort: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app1-svc
+  namespace: default
+spec:
+  selector:
+    ingressDep: app1-ingress
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: app1-ing
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.k8s.io/scheme: "internet-policy"
+    alb.ingress.kubernetes.k8s.io/connection: "{http}:{443}"
+    alb.ingress.kubernetes.k8s.io/certificate-arn: "arn-jh"
+    alb.ingress.kubernetes.k8s.io/group-Name: joindevops
+    alb.ingress.kubernetes.k8s.io/host: "app1.vrushali.online"
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "app1.vrushali.online"
+    paths:
+      pathType: Prefix
+      path: "/"
+      backend:
+        service:
+          name: app1-svc
+          port:
+            number: 80
