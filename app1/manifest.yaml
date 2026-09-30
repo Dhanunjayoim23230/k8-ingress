@@ -54,10 +54,11 @@ spec:
   - host: "app1.vrushali.online"
     http:
       paths:
-      - pathType: prefix
+      - pathType: Prefix
         path: "/"
         backend:
           service:
             name: app1-svc
               port:
                 number: 80
+
