@@ -35,6 +35,7 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
+    nodePort: 30007
 
 ---
 kind: Ingress
@@ -46,7 +47,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/Target-type: ip
     alb.ingress.kubernetes.k8s.io/connection: '[{"HTTPS" : 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:753369745113:certificate/a9c07550-c115-4c70-89a9-1009326eb5b5"
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:753369745113:certificate/a9c07550-c115-4c70-89a9-1009326eb5b5
     alb.ingress.kubernetes.io/group.name: "joindevops"
     alb.ingress.kubernetes.k8s.io/host: "app1.vrushali.online"
 spec:
